@@ -42,3 +42,15 @@ function updateOrderStatus(order, status, prepTime) {
         </span>
     `;
 }
+
+// Devuelve una Promise que se resuelve después de un tiempo aleatorio (1–5 s)
+// usando setTimeout para simular la preparación del pedido
+function simularPreparacion(order) {
+    const prepTime = Math.floor(Math.random() * 4000) + 1000; // entre 1 000 y 5 000 ms
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({ ...order, prepTime });
+        }, prepTime);
+    });
+}
