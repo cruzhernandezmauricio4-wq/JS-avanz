@@ -1,14 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador de Pedidos</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f0eb;
+            color: #3b2f2f;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #5c3d2e;
+        }
+
+        header p {
+            margin-top: 6px;
+            color: #7a5c4a;
+            font-size: 0.95rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        #addOrderBtn {
+            background-color: #5c3d2e;
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #addOrderBtn:hover {
+            background-color: #7a5c4a;
+        }
+
+        #orderList {
+            list-style: none;
+            max-width: 560px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        #orderList li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            font-size: 0.95rem;
+            transition: background-color 0.4s;
+        }
+
+        #orderList li .order-label {
+            font-weight: 600;
+            color: #3b2f2f;
+        }
+
+        #orderList li .order-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        #orderList li.en-proceso .order-status {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        #orderList li.completado {
+            background-color: #f0fff4;
+        }
+
+        #orderList li.completado .order-status {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        #orderList li .order-time {
+            font-size: 0.78rem;
+            color: #9e8276;
+            margin-left: 8px;
+        }
+
+        .empty-msg {
+            text-align: center;
+            color: #9e8276;
+            font-size: 0.9rem;
+            margin-top: 16px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Cafetería: Simulador de Pedidos</h1>
-    <button id="addOrderBtn">Agregar Pedido</button>
+    <header>
+        <h1>☕ Cafetería: Simulador de Pedidos</h1>
+        <p>Haz clic en el botón para agregar un pedido. Se procesará de manera asincrónica.</p>
+    </header>
+
+    <div class="controls">
+        <button id="addOrderBtn">Agregar Pedido</button>
+    </div>
+
     <ul id="orderList"></ul>
+    <p class="empty-msg" id="emptyMsg">No hay pedidos aún.</p>
+
     <script src="app.js"></script>
 </body>
 </html>
