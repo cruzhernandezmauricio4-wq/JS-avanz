@@ -54,3 +54,9 @@ function simularPreparacion(order) {
         }, prepTime);
     });
 }
+
+// Función asincrónica: espera la Promise de preparación y actualiza el estado
+async function processOrder(order) {
+    const orderCompletado = await simularPreparacion(order);
+    updateOrderStatus(orderCompletado, 'Completado', orderCompletado.prepTime);
+}
